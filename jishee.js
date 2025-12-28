@@ -54,10 +54,13 @@ function init(data) {
   const missionText2 = document.getElementById("mission-text-2");
   if (missionText2) missionText2.textContent = data.mission.text2;
 
+  
+
   // Gallery
   const galleryTitle = document.getElementById("gallery-title");
   if (galleryTitle) galleryTitle.textContent = data.gallery.title;
   const g = document.getElementById("gallery-grid");
+<<<<<<< Updated upstream
   if (g && data.gallery?.images) {
     data.gallery.images.forEach((src, index) => {
       const items = document.createElement("div");
@@ -76,11 +79,31 @@ function init(data) {
       g.appendChild(items);
     });
   }
+=======
+  data.gallery.images.forEach((src, index) => {
+    const items = document.createElement("div");
+    const img = document.createElement("img");
+    items.appendChild(img);
+    items.className = "gallery-item";
+    img.src = src;
+    img.alt = "Gallery image";
+    img.loading = "lazy";
+    img.classList.add("rotate");
+    if (index === 0) img.classList.add("img-top-left");
+    if (index === 1) img.classList.add("img-center");
+    if (index === 2) img.classList.add("img-bottom-left");
+    if (index === 3) img.classList.add("img-bottom-center");
+    if (index === 4) img.classList.add("img-top-right");
+    g.appendChild(items);
+  });
+  
+>>>>>>> Stashed changes
 
   // Menus
   const menusTitle = document.getElementById("menus-title");
   if (menusTitle) menusTitle.textContent = data.menus.title;
   const mg = document.getElementById("menus-grid");
+<<<<<<< Updated upstream
   if (mg && data.menus?.items) {
     data.menus.items.forEach((item) => {
       const card = document.createElement("div");
@@ -105,6 +128,26 @@ function init(data) {
       card.appendChild(img);
       card.appendChild(meta);
       mg.appendChild(card);
+=======
+  data.menus.items.forEach(item => {
+    const card = document.createElement("div");
+    card.className = "card";
+    const img = document.createElement("video");
+    img.src = item.image;
+    img.src = item.image;
+    img.alt = item.label;
+    img.loading = "lazy";
+    const meta = document.createElement("div");
+    meta.className = "card-meta";
+    const label = document.createElement("div");
+    label.className = "label";
+    label.textContent = item.label;
+    const go = document.createElement("button");
+    go.className = "go-btn";
+    go.textContent = "Open";
+    go.addEventListener("click", () => {
+      window.location.href = item.href;
+>>>>>>> Stashed changes
     });
   }
   document.querySelectorAll("#menu-footer-menu li a").forEach((link) => {
