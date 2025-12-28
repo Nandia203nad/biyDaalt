@@ -1,28 +1,37 @@
 // JSON-г гаднаас уншина
 fetch("jishee.json")
-  .then(r => r.json())
-  .then(data => init(data))
-  .catch(err => console.error("JSON алдаа:", err));
+  .then((r) => r.json())
+  .then((data) => init(data))
+  .catch((err) => console.error("JSON алдаа:", err));
 
 function init(data) {
   // Header actions
   const actions = document.querySelectorAll(".pill-btn");
-  const labels = [data.header.phoneLabel, data.header.orderLabel, data.header.reserveLabel];
-  actions.forEach((btn, i) => { btn.textContent = labels[i]; });
+  const labels = [
+    data.header.phoneLabel,
+    data.header.orderLabel,
+    data.header.reserveLabel,
+  ];
+  actions.forEach((btn, i) => {
+    btn.textContent = labels[i];
+  });
 
   // Header actions navigation
   const callBtn = document.querySelector('[data-action="call"]');
-  if (callBtn) callBtn.addEventListener("click", () => {
-    window.location.href = `tel:${data.header.phoneNumber}`;
-  });
+  if (callBtn)
+    callBtn.addEventListener("click", () => {
+      window.location.href = `tel:${data.header.phoneNumber}`;
+    });
   const orderBtn = document.querySelector('[data-action="order"]');
-  if (orderBtn) orderBtn.addEventListener("click", () => {
-    window.location.href = data.links.order;
-  });
+  if (orderBtn)
+    orderBtn.addEventListener("click", () => {
+      window.location.href = data.links.order;
+    });
   const reserveBtn = document.querySelector('[data-action="reserve"]');
-  if (reserveBtn) reserveBtn.addEventListener("click", () => {
-    window.location.href = data.links.reserve;
-  });
+  if (reserveBtn)
+    reserveBtn.addEventListener("click", () => {
+      window.location.href = data.links.reserve;
+    });
 
   // Hero
   const heroTitle = document.getElementById("hero-title");
@@ -73,7 +82,7 @@ function init(data) {
   if (menusTitle) menusTitle.textContent = data.menus.title;
   const mg = document.getElementById("menus-grid");
   if (mg && data.menus?.items) {
-    data.menus.items.forEach(item => {
+    data.menus.items.forEach((item) => {
       const card = document.createElement("div");
       card.className = "card";
       const img = document.createElement("img");
@@ -98,16 +107,27 @@ function init(data) {
       mg.appendChild(card);
     });
   }
+  document.querySelectorAll("#menu-footer-menu li a").forEach((link) => {
+    if (link.href === window.location.origin + window.location.pathname) {
+      link.classList.add("active");
+    }
+  });
 
-  // Highlight active menu item
-document.querySelectorAll('#menu-footer-menu li a').forEach(link => {
-  if (link.href === window.location.origin + window.location.pathname) {
-    link.classList.add('active');
+  const mobileFooter = document.getElementById("footer-mobile-bottom");
+  function toggleFooter() {
+    mobileFooter.classList.toggle("open");
   }
-});
+}
 
-// Toggle mobile footer (optional)
-const mobileFooter = document.getElementById('footer-mobile-bottom');
-function toggleFooter() {
-  mobileFooter.classList.toggle('open');
-}}
+const brand = document.getElementById("brandToggle");
+const menu = document.getElementById("megaMenu");
+
+brand.addEventListener("click", () => {
+  menu.classList.toggle("active");
+  const items = menu.querySelectorAll("li");
+  items.forEach((item) => {
+    item.style.animation = "none";
+    item.offsetHeight; 
+    item.style.animation = "";
+  });
+});

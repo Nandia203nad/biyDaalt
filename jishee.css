@@ -9,61 +9,189 @@
   --radius: 9999px;
 }
 
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: "Noto Serif Display", serif; }
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Noto Serif Display", serif;
+}
 
-.container { max-width: var(--container); margin: 0 auto; padding: 0 20px; }
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 20px;
+}
 
 /* Header */
 .site-header {
-  position: sticky; top: 0; z-index: 50;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 14px 20px; background: var(--dark); color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  background: var(--dark);
+  color: #fff;
 }
-.site-header img{
+.site-header img {
   width: 150px;
   height: 100px;
 }
-.brand { font-weight: 700; letter-spacing: 0.08em; }
-.header-actions { display: flex; gap: 10px; }
-.pill-btn {
-  border: 1px solid #444; background: transparent; color: #fff;
-  padding: 8px 14px; border-radius: var(--radius); cursor: pointer;
+.brand {
+  font-weight: 700;
+  letter-spacing: 0.08em;
 }
-.pill-btn:hover { border-color: #777; }
+.header-actions {
+  display: flex;
+  gap: 10px;
+}
+.pill-btn {
+  border: 1px solid #444;
+  background: transparent;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.pill-btn:hover {
+  border-color: #777;
+}
 
 /* Hero */
 .hero {
-  position: relative; 
+  position: relative;
   height: 1200px;
-  background: url("https://adachirestaurant.com/wp-content/uploads/2020/11/home-hero-scaled.jpg") center/cover no-repeat;
-  display: grid; 
+  background: url("https://adachirestaurant.com/wp-content/uploads/2020/11/home-hero-scaled.jpg")
+    center/cover no-repeat;
+  display: grid;
   place-items: center;
   font-family: "Style Script", cursive;
 }
-.hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.35)); }
-.hero-content { position: relative; text-align: center; color: #fff; padding: 0 20px; }
-.hero-content h1 { font-size: 2rem; margin: 0 0 8px; }
-.tagline { font-size: 200px; color: #ebdfd4; width:500px;position: absolute;left: -600px;top:-80px; line-height: 180px;letter-spacing: 10px; }
-#hero-title{
-    position: absolute;
-    font-size: 40px;
-    font-weight: 400;
-    color: #ebdfd4;
-    left: -480px;
-    top: 90px;
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.35));
+}
+.hero-content {
+  position: relative;
+  text-align: center;
+  color: #fff;
+  padding: 0 20px;
+}
+.hero-content h1 {
+  font-size: 2rem;
+  margin: 0 0 8px;
+}
+.tagline {
+  font-size: 200px;
+  color: #ebdfd4;
+  width: 500px;
+  position: absolute;
+  left: -600px;
+  top: -80px;
+  line-height: 180px;
+  letter-spacing: 10px;
+}
+#hero-title {
+  position: absolute;
+  font-size: 40px;
+  font-weight: 400;
+  color: #ebdfd4;
+  left: -480px;
+  top: 90px;
 }
 .cta-btn {
-  background: #fff; color: #000; border: none; cursor: pointer;
-  padding: 10px 18px; border-radius: var(--radius); font-weight: 600;
+  background: #fff;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  padding: 10px 18px;
+  border-radius: var(--radius);
+  font-weight: 600;
   position: absolute;
   right: -400px;
   top: 630px;
 }
-.cta-btn:hover { background: #f3f3f3; }
+.cta-btn:hover {
+  background: #f3f3f3;
+}
 .hero-inner {
   display: flex;
   height: 100%;
+}
+
+.site-header {
+  position: relative;
+  z-index: 100;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* 🔥 Menu overlay */
+.mega-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #fff;
+  transform: translateY(-100%);
+  transition: transform 0.6s cubic-bezier(0.77, 0, 0.18, 1);
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mega-menu.active {
+  transform: translateY(0);
+}
+
+.mega-menu ul {
+  list-style: none;
+  text-align: center;
+  padding: 0;
+}
+
+.mega-menu li {
+  font-size: 32px;
+  margin: 20px 0;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.mega-menu li:hover {
+  opacity: 0.6;
+}
+.mega-menu li {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.mega-menu.active li {
+  animation-delay: calc(var(--i) * 0.08s);
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero-side {
@@ -72,7 +200,7 @@ html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); f
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color:#ebdfd4;
+  color: #ebdfd4;
 }
 
 .vertical-brand {
@@ -81,6 +209,8 @@ html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); f
   position: absolute;
   left: 30px;
   top: 300px;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
 }
 
 .social-icons {
@@ -99,9 +229,12 @@ html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); f
   padding: 6px;
   cursor: pointer;
   border-radius: 50%;
-  width: 36px; height: 36px;
+  width: 36px;
+  height: 36px;
 }
-.social-btn:hover { background: rgba(255,255,255,0.2); }
+.social-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
 
 .hero-content {
   flex: 1;
@@ -114,43 +247,58 @@ html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); f
 .gallery-positioned {
   position: relative;
   width: 100%;
-  height: 600px; /* контейнерийн өндөр */
+  height: 600px;
+  overflow: hidden;
+}
+.gallery-positioned img {
+  position: absolute;
+  width: 220px;
+  border-radius: 12px;
+  z-index: 1; 
+  animation: spin360 12s linear infinite;
 }
 
 /* Гарчиг */
 .gallery-title {
   position: absolute;
-  top: 10px;
-  left: 30px;
+  top: 40px;
+  left: 40px;
+
   font-size: 130px;
+  line-height: 1.05;
   color: #ebdfd4;
-  width: 100px;
+
+  z-index: 3;          /* 🔑 зурагнаас дээгүүр */
+  max-width: 520px;
+  pointer-events: none;
 }
 
-/* Зурагнууд */
-.gallery-positioned img {
-  width: 220px;
-  height: auto;
-  border-radius: 12px;
-  animation: spin360 12s linear infinite;
-  position: absolute;
-}
+.pic1 { top: 120px; left: 80px; }
+.pic2 { top: 160px; right: 100px; }
+.pic3 { top: 300px; left: 260px; }
+.pic4 { bottom: 80px; right: 180px; }
+.pic5 { bottom: 120px; left: 420px; }
 
-/* Зураг бүрийн байрлал */
-.pic1 { top: 100px; left: 50px; }
-.pic2 { top: 150px; right: 80px; }
-.pic3 { top: 250px; left: 200px; }
-.pic4 { bottom: 50px; right: 150px; }
-.pic5 { bottom: 100px; left: 400px; }
+
+
+
 
 /* 360° эргэлт */
 @keyframes spin360 {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Menus */
-.cards.grid { display: grid; gap: 14px; grid-template-columns: repeat(4, 1fr); }
+.cards.grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(4, 1fr);
+}
 /* 1, 3 дахь картууд (дээш бага зэрэг) */
 .cards.grid .card:nth-child(1),
 .cards.grid .card:nth-child(3) {
@@ -163,39 +311,85 @@ html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); f
   transform: translateY(30px);
 }
 .card {
-  background: #f8f8f8; overflow: hidden; display: flex; flex-direction: column;
+  background: #f8f8f8;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
-.card img { width: 100%; height: 600px; object-fit: cover; transition: transform 0.6s ease, opacity 0.4s ease; animation: float 4s ease-in-out infinite; opacity: 0.85;}
-.card img:hover { transform: scale(1.05); opacity: 2; }
+.card img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  transition: transform 0.6s ease, opacity 0.4s ease;
+  animation: float 4s ease-in-out infinite;
+  opacity: 0.85;
+}
+.card img:hover {
+  transform: scale(1.05);
+  opacity: 2;
+}
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
-.card .card-meta { padding: 12px; display: flex; align-items: center; justify-content: space-between; }
-.card .label { font-weight: 600; }
+.card .card-meta {
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.card .label {
+  font-weight: 600;
+}
 .card .go-btn {
-  border: 1px solid #ccc; background: #fff; color: #000; padding: 6px 10px; border-radius: var(--radius); cursor: pointer;
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #000;
+  padding: 6px 10px;
+  border-radius: var(--radius);
+  cursor: pointer;
 }
-.card .go-btn:hover { border-color: var(--accent); color: var(--accent); }
-.menus .container{max-width: 100%; padding: 0;}
-.menus{
-    position: relative;
+.card .go-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
 }
-#menus-title {position: absolute; top:-180px; left: 50%; font-size: 200px; transform: translateX(-50%); width: 100%; text-align: center; font-weight: 400; color: var(--accent);color: #ebdfd4;}
+.menus .container {
+  max-width: 100%;
+  padding: 0;
+}
+.menus {
+  position: relative;
+}
+#menus-title {
+  position: absolute;
+  top: -180px;
+  left: 50%;
+  font-size: 200px;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  font-weight: 400;
+  color: var(--accent);
+  color: #ebdfd4;
+}
 
 #footer-wrapper {
-  background-image: url('https://adachirestaurant.com/wp-content/themes/adachi_new/images/menu-desktop-bg.jpg');
+  background-image: url("https://adachirestaurant.com/wp-content/themes/adachi_new/images/menu-desktop-bg.jpg");
 }
 
 footer {
-  background-image: url('https://adachirestaurant.com/wp-content/themes/adachi_new/images/menu-desktop-bg.jpg');
+  background-image: url("https://adachirestaurant.com/wp-content/themes/adachi_new/images/menu-desktop-bg.jpg");
   background-size: cover;
   background-position: center;
   color: #fff;
   padding: 40px 20px;
   font-family: Arial, sans-serif;
 }
-
 
 #the-footer-logo {
   text-align: center;
@@ -265,15 +459,86 @@ footer {
   margin-bottom: 30px;
   padding: 0 10px;
 }
-/* Responsive */
-@media (max-width: 1024px) {
-  .cards.grid { grid-template-columns: repeat(2, 1fr); }
-  .gallery .grid { grid-template-columns: repeat(2, 1fr); }
-  .hero-content h1 { font-size: 1.7rem; }
+
+.mega-menu li {
+  opacity: 0;
+  transform: translateY(20px);
 }
+.mega-menu.active li {
+  animation: menuItemIn 0.45s ease forwards;
+  animation-delay: calc(var(--i) * 0.3s);
+}
+
+@keyframes menuItemIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 1024px) {
+  .hero {
+    height: 80vh;
+  }
+
+  .hero-inner {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero-content {
+    padding: 40px 20px;
+  }
+
+  .tagline {
+    position: static;
+    font-size: 120px;
+    width: auto;
+    line-height: 1;
+    letter-spacing: 6px;
+    margin-bottom: 20px;
+  }
+
+  #hero-title {
+    position: static;
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  .cta-btn {
+    position: static;
+    margin-top: 30px;
+  }
+}
+
+/* MOBILE */
 @media (max-width: 600px) {
-  .header-actions { display: none; }
-  .cards.grid { grid-template-columns: 1fr; }
-  .gallery .grid { grid-template-columns: 1fr; }
-  .hero { height: 52vh; }
+  @media (max-width: 600px) {
+    .hero {
+      height: 60vh;
+    }
+
+    .hero-content {
+      padding: 20px;
+    }
+
+    .tagline {
+      font-size: 64px;
+      letter-spacing: 4px;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    #hero-title {
+      font-size: 20px;
+    }
+
+    .cta-btn {
+      font-size: 14px;
+      padding: 10px 20px;
+    }
+  }
 }
