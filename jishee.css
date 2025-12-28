@@ -20,6 +20,10 @@ html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); f
   display: flex; align-items: center; justify-content: space-between;
   padding: 14px 20px; background: var(--dark); color: #fff;
 }
+.site-header img{
+  width: 150px;
+  height: 100px;
+}
 .brand { font-weight: 700; letter-spacing: 0.08em; }
 .header-actions { display: flex; gap: 10px; }
 .pill-btn {
@@ -107,32 +111,43 @@ html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); f
   color: #fff;
 }
 
-/* Sections */
-.section { padding: 50px 0; }
-.section h2 { font-size: 1.6rem; margin: 0 0 12px; }
-.section p { color: #ebdfd4; line-height: 1.6; }
+.gallery-positioned {
+  position: relative;
+  width: 100%;
+  height: 600px; /* контейнерийн өндөр */
+}
 
-/* Gallery */
-#gallery-title{ text-align: center; margin-bottom: 30px;  font-family: "Noto Serif Display", serif; font-size: 150px; font-weight: 400; color: #ebdfd4; }
-.gallery .grid { display: grid; gap: 24px; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 300px); justify-items: flex-start;}
-.gallery .grid .gallery-item { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;  }
-.gallery .grid img { 
-    width: 100%; 
-    height:100% ; 
-    object-fit: contain; 
-    border-radius: 8px;
- }
-.img-top-left { grid-column: 1 / 1; grid-row: 1 / 4; }
-.img-center { grid-column: 3 / 4; grid-row: 1 / 1; }
-.img-bottom-left { grid-column: 1 / 2; grid-row: 3 / 4; }
-.img-bottom-center { grid-column: 2 / 3; grid-row: 3 / 4; }
-.img-top-right { grid-column: 2 / 4; grid-row: 1 / 7; }
-.rotate{animation: spin 50s infinite;}
-@keyframes spin {
+/* Гарчиг */
+.gallery-title {
+  position: absolute;
+  top: 10px;
+  left: 30px;
+  font-size: 130px;
+  color: #ebdfd4;
+  width: 100px;
+}
+
+/* Зурагнууд */
+.gallery-positioned img {
+  width: 220px;
+  height: auto;
+  border-radius: 12px;
+  animation: spin360 12s linear infinite;
+  position: absolute;
+}
+
+/* Зураг бүрийн байрлал */
+.pic1 { top: 100px; left: 50px; }
+.pic2 { top: 150px; right: 80px; }
+.pic3 { top: 250px; left: 200px; }
+.pic4 { bottom: 50px; right: 150px; }
+.pic5 { bottom: 100px; left: 400px; }
+
+/* 360° эргэлт */
+@keyframes spin360 {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-
 
 /* Menus */
 .cards.grid { display: grid; gap: 14px; grid-template-columns: repeat(4, 1fr); }
@@ -168,18 +183,88 @@ html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); f
 }
 #menus-title {position: absolute; top:-180px; left: 50%; font-size: 200px; transform: translateX(-50%); width: 100%; text-align: center; font-weight: 400; color: var(--accent);color: #ebdfd4;}
 
-/* Footer */
-.site-footer { background: #111; color: #fff; }
-.footer-top { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid #222; }
-.footer-brand { font-weight: 700; letter-spacing: 0.08em; }
-.footer-links { display: flex; gap: 12px; color: #bbb; }
-.footer-bottom { display: grid; gap: 8px; padding: 18px 0; color: #bbb; }
-.footer-credits { display: flex; gap: 6px; align-items: center; }
-.link-btn {
-  border: none; background: transparent; color: #bbb; text-decoration: underline; cursor: pointer;
+#footer-wrapper {
+  background-image: url('https://adachirestaurant.com/wp-content/themes/adachi_new/images/menu-desktop-bg.jpg');
 }
-.link-btn:hover { color: #fff; }
 
+footer {
+  background-image: url('https://adachirestaurant.com/wp-content/themes/adachi_new/images/menu-desktop-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+}
+
+
+#the-footer-logo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+#the-footer-logo img {
+  max-width: 160px;
+}
+
+#menu-footer-menu {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  padding: 0;
+  margin-bottom: 15px;
+}
+#menu-footer-menu li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+#footer-address {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  font-size: 13px;
+}
+.delimiter {
+  color: #aaa;
+}
+
+#footer-buttons-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+.the-button {
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 1px solid white;
+  font-weight: bold;
+  font-size: 14px;
+  display: inline-block;
+}
+
+#footer-bottom {
+  text-align: center;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+#footer-bottom a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+#footer-disclaimer {
+  font-size: 12px;
+  line-height: 1.6;
+  text-align: center;
+  color: #ccc;
+  margin-bottom: 30px;
+  padding: 0 10px;
+}
 /* Responsive */
 @media (max-width: 1024px) {
   .cards.grid { grid-template-columns: repeat(2, 1fr); }
